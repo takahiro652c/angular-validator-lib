@@ -40,3 +40,13 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# for library repository
+/e2e/*
+.angular-cli.json
+.editorconfig
+package.json
+protractor.conf.js
+tsconfig.json
+tslint.json
+
