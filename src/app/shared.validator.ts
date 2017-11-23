@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl, FormGroup, FormArray, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 /*
   validatorEqual() {

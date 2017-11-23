@@ -1,6 +1,7 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { validatorEqual, validatorAny, validatorAllOrNotAny, validatorSumMin, validatorSumMax } from './shared.validator';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { validatorAllOrNotAny, validatorAny, validatorEqual, validatorSumMax, validatorSumMin } from './shared.validator';
 
 @Component({
   selector: 'app-root',
