@@ -78,7 +78,7 @@ function isEqual(c: AbstractControl, value: any): [boolean, any] {
   } else if (c instanceof FormGroup) {
     let bool: boolean;
     let val: any = value;
-    for (let key of Object.keys(c.controls)) {
+    for (const key of Object.keys(c.controls)) {
       const cc: AbstractControl = c.controls[key];
       [bool, val] = isEqual(cc, val);
       if (!bool) {
@@ -104,7 +104,7 @@ function isAllEmpty(c: AbstractControl): boolean {
   if (c instanceof FormControl) {
     return isEmptyInputValue(c.value);
   } else if (c instanceof FormGroup) {
-    for (let key of Object.keys(c.controls)) {
+    for (const key of Object.keys(c.controls)) {
       const cc: AbstractControl = c.controls[key];
       if (!isAllEmpty(cc)) {
         return false;
@@ -134,7 +134,7 @@ function isAllEmptyOrAllFull(c: AbstractControl, empty: boolean, full: boolean):
   } else if (c instanceof FormGroup) {
     let e: boolean = empty;
     let f: boolean = full;
-    for (let key of Object.keys(c.controls)) {
+    for (const key of Object.keys(c.controls)) {
       const cc: AbstractControl = c.controls[key];
       [e, f] = isAllEmptyOrAllFull(cc, e, f);
       if (e && f) {
@@ -168,7 +168,7 @@ function calcSumUntilMax(c: AbstractControl, sum: number, max: number): number |
       s += value;
     }
   } else if (c instanceof FormGroup) {
-    for (let key of Object.keys(c.controls)) {
+    for (const key of Object.keys(c.controls)) {
       const cc: AbstractControl = c.controls[key];
       s = calcSumUntilMax(cc, s, max);
       if (s === null || s > max) {
@@ -176,7 +176,6 @@ function calcSumUntilMax(c: AbstractControl, sum: number, max: number): number |
       }
     }
   } else if (c instanceof FormArray) {
-    let bool: boolean | null;
     for (let i = 0; i < c.controls.length; i++) {
       const cc: AbstractControl = c.controls[i];
       s = calcSumUntilMax(cc, s, max);

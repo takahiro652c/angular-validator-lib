@@ -1,4 +1,4 @@
-import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { validatorEqual, validatorAny, validatorAllOrNotAny, validatorSumMin, validatorSumMax } from './shared.validator';
 
