@@ -13,13 +13,13 @@ import { returnErrorValidator, validatorsEnableIf, validatorsEnableIfRef } from 
       .errors: {{ forms.errors | json }}<br>
       <hr>
       <div>
-        <h3>validatorsEnableIf([returnErrorValidator()], valueEqualCheckFn((string))('1'))</h3>
+        <h3>validatorsEnableIf(returnErrorValidator(), valueEqualCheckFn((string))('1'))</h3>
         .valid: {{ forms.controls.form1.valid | json }}<br>.errors: {{ forms.controls.form1.errors | json }}<br>
         <input formControlName="form1">
       </div>
       <hr>
       <div>
-        <h3> validatorsEnableIfRef([Validators.email], valueEqualToCheckFn())([this.form1]))</h3>
+        <h3> validatorsEnableIfRef([Valicators.requred, Validators.email], valueEqualToCheckFn())([this.form1]))</h3>
         .valid: {{ forms.controls.form2.valid | json }}<br>.errors: {{ forms.controls.form2.errors | json }}<br>
         <input formControlName="form2" type="email">
       </div>
@@ -29,9 +29,9 @@ import { returnErrorValidator, validatorsEnableIf, validatorsEnableIfRef } from 
   styleUrls: []
 })
 export class ValidatorEnableIfComponent {
-  form1 = new FormControl(null, validatorsEnableIf([returnErrorValidator()], valueEqualCheckFn<string>('1')));
+  form1 = new FormControl(null, validatorsEnableIf(returnErrorValidator(), valueEqualCheckFn<string>('1')));
   forms = new FormGroup({
     form1: this.form1,
-    form2: new FormControl(null, validatorsEnableIfRef([Validators.email], valueEqualToCheckFn())([this.form1])),
+    form2: new FormControl(null, validatorsEnableIfRef([Validators.required, Validators.email], valueEqualToCheckFn())([this.form1])),
   });
 }

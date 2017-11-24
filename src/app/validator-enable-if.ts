@@ -5,22 +5,24 @@ export type ValidatorFnRef = (refs: AbstractControl[]) => ValidatorFn;
 
 // checkFnがtrueの場合だけvalidatorsによるvalidateを行う
 // checkFnがfalseの場合はnullを返す
-export function validatorsEnableIf(validators: ValidatorFn[], checkFn: CheckFn): ValidatorFn {
+export function validatorsEnableIf(validators: ValidatorFn | ValidatorFn[], checkFn: CheckFn): ValidatorFn {
   return validatorsEnableIfRef(validators, checkFn)([]);
 }
 
 // checkFnRefがtrueの場合だけvalidatorsによるvalidateを行う
 // checkFnRefがfalseの場合はnullを返す
 // ただし，validatorsEnableIfRef(validators, checkFnRef)(refs)のようにrefsを指定する
-export function validatorsEnableIfRef(validators: ValidatorFn[], checkFn: CheckFn): ValidatorFnRef {
-  const validator = Validators.compose(validators);
+export function validatorsEnableIfRef(validators: ValidatorFn | ValidatorFn[], checkFn: CheckFn): ValidatorFnRef {
+  const validator = Array.isArray(validators) ? Validators.compose(validators) : validators;
   let subscribe = false;
 
   return (refs: AbstractControl[]): ValidatorFn => (c: AbstractControl): ValidationErrors => {
     if (!subscribe) {
       subscribe = true;
       for (let i = 0; i < refs.length; i++) {
-        refs[i].valueChanges.subscribe(() => c.updateValueAndValidity());
+        refs[i].valueChanges.subscribe(() => {
+          c.updateValueAndValidity();
+        });
       }
     }
 
