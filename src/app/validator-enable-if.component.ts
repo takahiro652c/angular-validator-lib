@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { valueEqualCheckFn, valueEqualToCheckFn } from 'app/check-function';
+import { valueEqualCheckFn, valueEqualToCheckFn } from './check-function';
+import { validatorsEnableIf, returnErrorValidator, validatorsEnableIfRef } from './validator-enable-if';
 
-import { returnErrorValidator, validatorsEnableIf, validatorsEnableIfRef } from './validator-enable-if';
 
 @Component({
   selector: 'app-validator-enable-if',
