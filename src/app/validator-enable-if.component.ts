@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { valueEqualCheckFn, valueEqualToCheckFn } from './check-function';
-import {
-  validatorsEnableIfRef, validatorCheck, validatorCheckRef, validatorCheckRefLazy, validatorsEnableIf, validatorsEnableIfRefLazy
-} from './validator-enable-if';
 import { AbstractControl } from '@angular/forms/src/model';
 
+import { valueEqualCheckFn, valueEqualToCheckFn } from './check-function';
+import {
+  validatorCheck,
+  validatorCheckRef,
+  validatorCheckRefLazy,
+  validatorsEnableIf,
+  validatorsEnableIfRef,
+  validatorsEnableIfRefLazy
+} from './validator-enable-if';
 
 @Component({
   selector: 'app-validator-enable-if',

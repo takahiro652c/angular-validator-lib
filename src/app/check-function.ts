@@ -1,4 +1,5 @@
 import { AbstractControl } from '@angular/forms';
+
 import { CheckFn } from './validator-enable-if';
 
 export function valueEqualCheckFn<T>(val: T): CheckFn {
