@@ -91,11 +91,11 @@ export class ValidatorEnableIfComponent {
     form6: this.form6,
   });
 
-  checkFn4(c: AbstractControl, refs?: AbstractControl[]): boolean {
+  checkFn4(c: AbstractControl, refs: AbstractControl[]): boolean {
     return c.value === 'hoge';
   }
 
-  checkFn5(c: AbstractControl, refs?: AbstractControl[]): boolean {
+  checkFn5(c: AbstractControl, refs: AbstractControl[]): boolean {
     for (let i = 0; i < refs.length; i++) {
       const value = refs[i].value;
       if (value == null || value === '') {

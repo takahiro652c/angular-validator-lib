@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
-export type CheckFn = (c: AbstractControl, refs?: AbstractControl[]) => boolean;
+export type CheckFn = (c: AbstractControl, refs: AbstractControl[]) => boolean;
 export type ValidatorFnRef = (refs: AbstractControl[]) => ValidatorFn;
 
 export function validatorCheck(checkFn: CheckFn, error?: ValidationErrors): ValidatorFn {
@@ -14,7 +14,7 @@ export function validatorCheckRef(checkFn: CheckFn, refs: AbstractControl[], err
 }
 
 export function validatorCheckRefLazy(checkFn: CheckFn, error?: ValidationErrors): ValidatorFnRef {
-  const validationError: ValidationErrors = error || { validatorCheckRef: true };
+  const validationError: ValidationErrors = error || { validatorCheckRefLazy: true };
   return validatorsEnableIfRefLazy(returnErrorValidator(validationError), checkFn);
 }
 
